@@ -78,8 +78,8 @@ for i=1:m
     J = J - sum(yi.*log(a3)+(1-yi).*log(1-a3));
 
     d3 = a3 - yi;
-    d2 = Theta2'*d3.*[0;sigmoidGradient(z2)];
-    D1 = D1 + d2(2:end)*a1';
+    d2 = Theta2(:,2:end)'*d3.*sigmoidGradient(z2);
+    D1 = D1 + d2*a1';
     D2 = D2 + d3*a2';
 end;
 
